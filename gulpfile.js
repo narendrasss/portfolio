@@ -1,53 +1,63 @@
-const browserSync = require("browser-sync").create();
 const gulp = require("gulp");
 const sass = require("gulp-sass");
+const inject = require("gulp-inject");
+const webserver = require("gulp-webserver");
 
-gulp.task("browserSync", () => {
-  browserSync.init({
-    server: {
-      baseDir: "src"
-    }
-  });
+const paths = {
+  src: "src/**/*",
+  srcHTML: "src/**/*.html",
+  srcSCSS: "src/scss/**/*.scss",
+  srcJS: "src/js/**/*.js",
+
+  tmp: "tmp",
+  tmpIndex: "tmp/index.html",
+  tmpCSS: "tmp/**/*.css",
+  tmpJS: "tmp/**/*.js",
+
+  dist: "dist",
+  distIndex: "dist/index.html",
+  distCSS: "dist/**/*.css",
+  distJS: "dist/**/*.js"
+};
+
+gulp.task("html", () => {
+  return gulp.src(paths.srcHTML).pipe(gulp.dest(paths.tmp));
 });
 
-// compile sass -> css
-gulp.task("sass", () => {
+gulp.task("css", () => {
   return gulp
-    .src("src/scss/main.scss")
+    .src(paths.srcSCSS)
     .pipe(sass())
-    .pipe(gulp.dest("src"))
-    .pipe(
-      browserSync.reload({
-        stream: true
-      })
-    );
+    .pipe(gulp.dest(paths.tmp));
 });
 
-// compile js with babel
-gulp.task("scripts", () => {
+gulp.task("js", () => {
+  return gulp.src(paths.srcJS).pipe(gulp.dest(paths.tmp));
+});
+
+gulp.task("copy", gulp.parallel(["html", "css", "js"]));
+
+gulp.task("inject", () => {
+  const css = gulp.src(paths.tmpCSS);
+  const js = gulp.src(paths.tmpJS);
   return gulp
-    .src(["node_modules/babel-polyfill/dist/polyfill.js", "js/*.js"])
-    .pipe(babel())
-    .pipe(gulp.dest("src/compiled"));
+    .src(paths.tmpIndex)
+    .pipe(inject(css, { relative: true }))
+    .pipe(inject(js, { relative: true }))
+    .pipe(gulp.dest(paths.tmp));
 });
 
-// watch for css changes
-gulp.task("watch:css", () => {
-  return gulp.watch("src/scss/**/*.scss", gulp.series("sass"));
+gulp.task("serve", () => {
+  return gulp.src(paths.tmp).pipe(
+    webserver({
+      port: 3000,
+      livereload: true
+    })
+  );
 });
 
-// watch for js changes
-gulp.task("watch:js", () => {
-  return gulp.watch("src/js/**/*.js", gulp.series("scripts"));
+gulp.task("watch", () => {
+  gulp.watch(paths.src, gulp.series(["copy", "inject"]));
 });
 
-// watch for html changes
-gulp.task("watch:html", () => {
-  return gulp.watch("src/*.html", browserSync.reload);
-});
-
-// run dev mode
-gulp.task(
-  "default",
-  gulp.series("sass", gulp.parallel("browserSync", "watch:css", "watch:html"))
-);
+gulp.task("dev", gulp.series(["copy", "inject", "serve", "watch"]));
