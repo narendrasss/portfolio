@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,600,700,800");
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Space+Mono:400,400i");
+@import url("https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700");
+
+/* --- Colors --- */
+
+$c-head: #373836;
+$c-body: #1e2022;
+$c-body-s: #a6a4a0;
+$c-bkg: #f2f2f2;
+
+$c-lg: #d9e2e9;
+
+$c-highlight: #2ecc71;
+
+/* --- Fonts --- */
+
+$f-head: "Montserrat", sans-serif;
+$f-body: "Work Sans", sans-serif;
+//$f-body: "Libre Baskerville", serif;
+$f-mono: "Space Mono", monospace;
+
+$f-size-base: 12px;
+
+/* --- Mixins --- */
+
+@mixin respond-to($breakpoint) {
+  @media only screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

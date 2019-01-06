@@ -1,3 +1,7 @@
-body {
-  background: red;
-}
+@import "settings";
+@import "reset";
+@import "default";
+
+@import "pages/landing";
+
+@import "components/profile";

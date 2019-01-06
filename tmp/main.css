@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,600,700,800");
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Space+Mono:400,400i");
+@import url("https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700");
+/* --- Colors --- */
+/* --- Fonts --- */
+/* --- Mixins --- */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0; }
+
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: auto; }
+
+body {
+  font-family: "Work Sans", sans-serif;
+  font-size: 12px;
+  line-height: 1.618;
+  color: #1e2022;
+  z-index: 0; }
+  @media only screen and (min-width: 375px) {
+    body {
+      font-size: 16px; } }
+  @media only screen and (min-width: 414px) {
+    body {
+      font-size: 18px; } }
+
+a {
+  text-decoration: none;
+  color: inherit; }
+
+code {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-family: "Space Mono", monospace; }
+
+ul,
+li {
+  list-style-position: inside; }
+
+h1,
+h2 {
+  font-family: "Montserrat", sans-serif; }
+
+h1 {
+  font-size: 3em; }
+
+button {
+  cursor: pointer;
+  color: inherit;
+  border: none; }
+  button:focus {
+    outline: 0; }
+
+.profile {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.profile {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.profile--desc {
+  width: 75%; }
+
+.profile--intro {
+  line-height: 1.2; }
+
+.profile--text {
+  margin-top: 1rem; }
