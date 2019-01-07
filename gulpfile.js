@@ -10,7 +10,7 @@ const paths = {
   srcJS: "src/js/**/*.js",
 
   tmp: "tmp",
-  tmpIndex: "tmp/index.html",
+  tmpHTML: "tmp/**/*.html",
   tmpCSS: "tmp/**/*.css",
   tmpJS: "tmp/**/*.js",
 
@@ -41,7 +41,7 @@ gulp.task("inject", () => {
   const css = gulp.src(paths.tmpCSS);
   const js = gulp.src(paths.tmpJS);
   return gulp
-    .src(paths.tmpIndex)
+    .src(paths.tmpHTML)
     .pipe(inject(css, { relative: true }))
     .pipe(inject(js, { relative: true }))
     .pipe(gulp.dest(paths.tmp));

@@ -19,7 +19,7 @@ html {
 
 body {
   font-family: "Work Sans", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.618;
   color: #1e2022;
   z-index: 0; }
@@ -49,7 +49,8 @@ h2 {
   font-family: "Montserrat", sans-serif; }
 
 h1 {
-  font-size: 3em; }
+  font-size: 3em;
+  opacity: 0.8; }
 
 button {
   cursor: pointer;
@@ -58,24 +59,33 @@ button {
   button:focus {
     outline: 0; }
 
-.profile {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); }
+::selection {
+  background: yellow; }
 
-.profile {
+.site {
   height: 100vh;
   width: 100vw;
+  padding: 0 2rem;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center; }
 
-.profile--desc {
-  width: 75%; }
+.profile--text {
+  margin-top: 1rem; }
+
+.profile--links {
+  margin-top: 1rem; }
+
+.profile {
+  width: 100%; }
 
 .profile--intro {
   line-height: 1.2; }
 
-.profile--text {
-  margin-top: 1rem; }
+.profile--link {
+  list-style: none; }
+
+.link {
+  color: #435ef6;
+  font-weight: 700; }
