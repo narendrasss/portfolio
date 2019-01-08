@@ -14,3 +14,24 @@
   position: absolute;
   bottom: 2.5rem;
 }
+
+.nav {
+  position: fixed;
+  transform: translateX(100%);
+}
+
+.nav--active {
+  transform: translateX(0);
+}
+
+.nav__open {
+  position: absolute;
+  left: -2rem;
+  top: 8vh;
+}
+
+.nav__close {
+  position: absolute;
+  right: 2rem;
+  top: 8vh;
+}

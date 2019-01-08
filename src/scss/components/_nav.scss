@@ -1,9 +1,8 @@
 .nav {
-  position: fixed;
   width: 100vw;
   height: 100vh;
   background: white;
-  transform: translateX(100%);
+  @include center-contents;
 }
 
 .nav__open {
@@ -12,9 +11,23 @@
   height: 5rem;
   background: white;
   color: $c-body-s;
-  left: -2rem;
-  top: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include center-contents;
+}
+
+.nav__close {
+  color: $c-body-s;
+  background: none;
+}
+
+.nav__links {
+  font-family: $f-head;
+  font-size: 2rem;
+  list-style: none;
+}
+
+.nav__link {
+  margin-bottom: 1rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }

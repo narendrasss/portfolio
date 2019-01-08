@@ -84,10 +84,28 @@ button {
 
 .nav {
   position: fixed;
+  transform: translateX(100%); }
+
+.nav--active {
+  transform: translateX(0); }
+
+.nav__open {
+  position: absolute;
+  left: -2rem;
+  top: 8vh; }
+
+.nav__close {
+  position: absolute;
+  right: 2rem;
+  top: 8vh; }
+
+.nav {
   width: 100vw;
   height: 100vh;
   background: white;
-  transform: translateX(100%); }
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .nav__open {
   position: absolute;
@@ -95,11 +113,23 @@ button {
   height: 5rem;
   background: white;
   color: #435ef6;
-  left: -2rem;
-  top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center; }
+
+.nav__close {
+  color: #435ef6;
+  background: none; }
+
+.nav__links {
+  font-family: "Libre Baskerville", serif;
+  font-size: 2rem;
+  list-style: none; }
+
+.nav__link {
+  margin-bottom: 1rem; }
+  .nav__link:last-child {
+    margin-bottom: 0; }
 
 .profile {
   color: white;
@@ -137,5 +167,4 @@ button {
   font-weight: 700; }
 
 .link--mail {
-  font-style: "IBM Plex Mono", monospace;
   font-size: 0.9rem; }

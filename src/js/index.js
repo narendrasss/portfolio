@@ -1,7 +1,11 @@
-const navBtn = document.querySelector(".nav__open");
 const nav = document.querySelector(".nav");
+const openNav = document.querySelector(".nav__open");
+const closeNav = document.querySelector(".nav__close");
 
-navBtn.addEventListener("click", () => {
-  console.log("button clicked");
-  nav.style["translateX"] = "0%";
+openNav.addEventListener("click", function() {
+  nav.classList.toggle("nav--active");
+});
+
+closeNav.addEventListener("click", function() {
+  nav.classList.toggle("nav--active");
 });
