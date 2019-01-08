@@ -1,0 +1,20 @@
+.nav {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  transform: translateX(100%);
+}
+
+.nav__open {
+  position: absolute;
+  width: 2rem;
+  height: 5rem;
+  background: white;
+  color: $c-body-s;
+  left: -2rem;
+  top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

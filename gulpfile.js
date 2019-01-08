@@ -50,6 +50,7 @@ gulp.task("inject", () => {
 gulp.task("serve", () => {
   return gulp.src(paths.tmp).pipe(
     webserver({
+      host: "0.0.0.0",
       port: 3000,
       livereload: true
     })

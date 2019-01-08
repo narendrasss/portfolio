@@ -1,5 +1,16 @@
 .profile {
-  width: 100%;
+  color: white;
+  background: $c-body-s;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem;
+}
+
+.profile--text {
+  width: 80%;
 }
 
 .profile--intro {

@@ -1,7 +1,16 @@
+.profile {
+  position: relative;
+}
+
 .profile--text {
   margin-top: 1rem;
 }
 
 .profile--links {
   margin-top: 1rem;
+}
+
+.link--mail {
+  position: absolute;
+  bottom: 2.5rem;
 }

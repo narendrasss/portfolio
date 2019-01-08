@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Work+Sans:300,400,700");
-@import url("https://fonts.googleapis.com/css?family=Space+Mono:400,400i");
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,700,700i");
 @import url("https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700");
 /* --- Colors --- */
 /* --- Fonts --- */
@@ -38,7 +38,7 @@ code {
   background: rgba(0, 0, 0, 0.05);
   padding: 3px 6px;
   border-radius: 4px;
-  font-family: "Space Mono", monospace; }
+  font-family: "IBM Plex Mono", monospace; }
 
 ul,
 li {
@@ -46,11 +46,10 @@ li {
 
 h1,
 h2 {
-  font-family: "Montserrat", sans-serif; }
+  font-family: "Libre Baskerville", serif; }
 
 h1 {
-  font-size: 3em;
-  opacity: 0.8; }
+  font-size: 3em; }
 
 button {
   cursor: pointer;
@@ -65,11 +64,13 @@ button {
 .site {
   height: 100vh;
   width: 100vw;
-  padding: 0 2rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center; }
+
+.profile {
+  position: relative; }
 
 .profile--text {
   margin-top: 1rem; }
@@ -77,8 +78,41 @@ button {
 .profile--links {
   margin-top: 1rem; }
 
+.link--mail {
+  position: absolute;
+  bottom: 2.5rem; }
+
+.nav {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  transform: translateX(100%); }
+
+.nav__open {
+  position: absolute;
+  width: 2rem;
+  height: 5rem;
+  background: white;
+  color: #435ef6;
+  left: -2rem;
+  top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
 .profile {
-  width: 100%; }
+  color: white;
+  background: #435ef6;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem; }
+
+.profile--text {
+  width: 80%; }
 
 .profile--intro {
   line-height: 1.2; }
@@ -87,5 +121,21 @@ button {
   list-style: none; }
 
 .link {
-  color: #435ef6;
+  position: relative;
+  color: white;
   font-weight: 700; }
+  .link:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: white;
+    bottom: -0.2rem;
+    left: 0; }
+
+.link--active {
+  font-weight: 700; }
+
+.link--mail {
+  font-style: "IBM Plex Mono", monospace;
+  font-size: 0.9rem; }
