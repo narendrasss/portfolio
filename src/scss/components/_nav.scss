@@ -26,8 +26,26 @@
 }
 
 .nav__link {
+  position: relative;
   margin-bottom: 1rem;
   &:last-child {
     margin-bottom: 0;
+  }
+  &:after {
+    position: absolute;
+    content: "";
+    height: 1rem;
+    width: 100%;
+    background: $main-200;
+    left: -0.5rem;
+    bottom: 0.5rem;
+    z-index: -1;
+    transform: scaleX(0.3);
+    transform-origin: left;
+  }
+  &:hover {
+    &:after {
+      transform: scaleX(1);
+    }
   }
 }

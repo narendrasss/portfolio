@@ -127,9 +127,23 @@ button {
   list-style: none; }
 
 .nav__link {
+  position: relative;
   margin-bottom: 1rem; }
   .nav__link:last-child {
     margin-bottom: 0; }
+  .nav__link:after {
+    position: absolute;
+    content: "";
+    height: 1rem;
+    width: 100%;
+    background: #d9dffd;
+    left: -0.5rem;
+    bottom: 0.5rem;
+    z-index: -1;
+    transform: scaleX(0.3);
+    transform-origin: left; }
+  .nav__link:hover:after {
+    transform: scaleX(1); }
 
 .profile {
   color: white;
