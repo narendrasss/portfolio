@@ -10,25 +10,41 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="main.css">
     <!-- endinject -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
   </head>
 
   <body>
-    <main class="profile">
-      <div class="profile--desc">
-        <h1 class="profile--intro">Narendra Syahrasyad.</h1>
-        <p class="profile--text">
-          Aspiring software engineer. <br />
-          Undergraduate student at UBC.
-        </p>
+    <main class="site">
+      <div class="profile">
+        <h1>Let's talk.</h1>
+        <p>Send me an email, or message me in one of my networks.</p>
+        <ul class="contact-links">
+          <li class="contact-link">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:hello@narendras.io">hello@narendras.io</a>
+          </li>
+          <li class="contact-link">
+            <i class="fab fa-linkedin"></i>
+            <a href="https://www.linkedin.com/in/narendrass/">in/narendrass</a>
+          </li>
+        </ul>
       </div>
       <nav class="nav">
-        <li class="nav--item">
-          <a href="./projects/index.html" class="link">Projects</a>
-        </li>
-        <li class="nav--item"><a href="./about.html" class="link">About</a></li>
-        <li class="nav--item">
-          <a href="./contact.html" class="link">Contact</a>
-        </li>
+        <button class="nav__open">
+          <i class="fas fa-caret-left fa-2x"></i>
+        </button>
+        <button class="nav__close"><i class="fas fa-times fa-4x"></i></button>
+        <ul class="nav__links">
+          <li class="nav__link"><a href="/">Home</a></li>
+          <li class="nav__link"><a href="./about.html">About</a></li>
+          <li class="nav__link"><a href="./projects/">Projects</a></li>
+          <li class="nav__link"><a href="./contact.html">Contact</a></li>
+        </ul>
       </nav>
     </main>
     <!-- inject:js -->

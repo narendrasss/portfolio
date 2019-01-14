@@ -1,8 +1,14 @@
+/* -- Mobile Navigation -- */
+
 .nav {
   width: 100vw;
   height: 100vh;
   background: white;
+  color: $c-body;
   @include center-contents;
+  @include respond-to(750px) {
+    display: none;
+  }
 }
 
 .nav__open {
@@ -49,3 +55,5 @@
     }
   }
 }
+
+/* -- Desktop Navigation -- */

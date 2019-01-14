@@ -1,9 +1,12 @@
 @import "settings";
 @import "reset";
 @import "default";
+@import "site";
 
 @import "pages/landing";
+@import "pages/contact";
 
 @import "components/nav";
 @import "components/profile";
 @import "components/link";
+@import "components/contact";
