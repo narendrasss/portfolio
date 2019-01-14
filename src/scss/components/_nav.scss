@@ -15,8 +15,8 @@
   position: absolute;
   width: 2rem;
   height: 5rem;
-  background: white;
-  color: $c-body-s;
+  background: $c-body-s;
+  color: white;
   @include center-contents;
 }
 
