@@ -1,5 +1,6 @@
 .profile {
   position: relative;
+  grid-column: 2;
 }
 
 .profile--text {
@@ -18,6 +19,10 @@
 .nav {
   position: fixed;
   transform: translateX(100%);
+  @include respond-to(1200px) {
+    position: relative;
+    transform: translateX(-20%);
+  }
 }
 
 .nav--active {

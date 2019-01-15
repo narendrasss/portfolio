@@ -71,10 +71,14 @@ button {
   @media only screen and (min-width: 710px) {
     .site {
       display: grid;
-      grid-template-columns: 60% 40%; } }
+      grid-template-columns: 1fr 80% 1fr; } }
+  @media only screen and (min-width: 1200px) {
+    .site {
+      grid-template-columns: 1fr 60% 20% 1fr; } }
 
 .profile {
-  position: relative; }
+  position: relative;
+  grid-column: 2; }
 
 .profile--text {
   margin-top: 1rem; }
@@ -89,6 +93,10 @@ button {
 .nav {
   position: fixed;
   transform: translateX(100%); }
+  @media only screen and (min-width: 1200px) {
+    .nav {
+      position: relative;
+      transform: translateX(-20%); } }
 
 .nav--active {
   transform: translateX(0); }
@@ -115,9 +123,11 @@ button {
   display: flex;
   align-items: center;
   justify-content: center; }
-  @media only screen and (min-width: 750px) {
+  @media only screen and (min-width: 1200px) {
     .nav {
-      display: none; } }
+      width: 100%;
+      height: 50%;
+      box-shadow: 2px 12px 30px 4px rgba(0, 0, 0, 0.05), 3px 8px 5px rgba(0, 0, 0, 0.03), 2px 3px 4px -2px rgba(0, 0, 0, 0.08), 0px 75px 70px -50px rgba(10, 20, 50, 0.12), 0px -5px 5px 0px white; } }
 
 .nav__open {
   position: absolute;
@@ -157,7 +167,6 @@ button {
   .nav__link:hover:after {
     transform: scaleX(1); }
 
-/* -- Desktop Navigation -- */
 .profile {
   width: 100vw;
   height: 100vh;
@@ -168,7 +177,8 @@ button {
   @media only screen and (min-width: 670px) {
     .profile {
       width: 100%;
-      height: 100%; } }
+      height: 60%;
+      box-shadow: 2px 12px 30px 4px rgba(0, 0, 0, 0.05), 3px 8px 5px rgba(0, 0, 0, 0.03), 2px 3px 4px -2px rgba(0, 0, 0, 0.08), 0px 75px 70px -50px rgba(10, 20, 50, 0.12), 0px -5px 5px 0px white; } }
 
 .profile--text {
   width: 80%; }

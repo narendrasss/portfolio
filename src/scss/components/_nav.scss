@@ -6,8 +6,10 @@
   background: white;
   color: $c-body;
   @include center-contents;
-  @include respond-to(750px) {
-    display: none;
+  @include respond-to(1200px) {
+    width: 100%;
+    height: 50%;
+    @include std-shadow;
   }
 }
 
@@ -55,5 +57,3 @@
     }
   }
 }
-
-/* -- Desktop Navigation -- */

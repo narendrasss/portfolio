@@ -7,6 +7,9 @@
   justify-content: center;
   @include respond-to(710px) {
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 1fr 80% 1fr;
+  }
+  @include respond-to(1200px) {
+    grid-template-columns: 1fr 60% 20% 1fr;
   }
 }
