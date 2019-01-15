@@ -37,7 +37,7 @@ $f-size-base: 14px;
 }
 
 @mixin center-self($abs) {
-  display: $abs;
+  position: $abs;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

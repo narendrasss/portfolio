@@ -131,6 +131,18 @@ button {
   width: 100%;
   height: 100%;
   padding: 2rem; }
+  @media only screen and (min-width: 650px) {
+    .content {
+      width: 80%;
+      height: 60%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 2px 12px 30px 4px rgba(0, 0, 0, 0.05), 3px 8px 5px rgba(0, 0, 0, 0.03), 2px 3px 4px -2px rgba(0, 0, 0, 0.08), 0px 75px 70px -50px rgba(10, 20, 50, 0.12), 0px -5px 5px 0px white; } }
 
 .content__text {
   margin-top: 1rem; }
@@ -146,6 +158,10 @@ button {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center; }
+  @media only screen and (min-width: 650px) {
+    .info {
+      width: 70%;
+      height: auto; } }
 
 .about {
   display: none; }
