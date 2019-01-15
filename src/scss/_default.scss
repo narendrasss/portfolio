@@ -18,6 +18,8 @@ li {
 h1,
 h2 {
   font-family: $f-head;
+  color: $c-head;
+  line-height: 1;
 }
 
 h1 {
@@ -25,6 +27,7 @@ h1 {
 }
 
 button {
+  background: none;
   cursor: pointer;
   color: inherit;
   border: none;

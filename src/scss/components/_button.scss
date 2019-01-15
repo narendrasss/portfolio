@@ -1,0 +1,14 @@
+.btn {
+}
+
+.btn--nav {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  @include std-shadow;
+}
+
+.btn--nav--close {
+  background: $c-head;
+  box-shadow: none;
+}

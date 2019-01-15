@@ -19,32 +19,41 @@
   </head>
   <body>
     <main class="site">
-      <div class="profile">
-        <h1 class="profile--intro">Narendra Syahrasyad.</h1>
-        <p class="profile--text">
-          Aspiring software engineer. <br />
-          Business and Computer Science at UBC.
-        </p>
-        <nav class="profile--links">
-          <li class="profile--link">
-            Check out my <a class="link" href="./projects/">projects</a>.
-          </li>
-        </nav>
-        <a class="link--mail" href="mailto:n.syahrasyad.n@gmail.com">
-          hello@narendras.io
-        </a>
+      <div class="content">
+        <div class="info profile content--active">
+          <h1 class="content__title">Narendra Syahrasyad.</h1>
+          <div class="content__text">
+            <p>
+              Aspiring software developer. Business and computer science at UBC.
+            </p>
+            <p>Check out my <a class="link" href="./projects/">projects</a>!</p>
+          </div>
+          <div class="profile__links">
+            <a href="mailto:hello@narendras.io">
+              <i class="fas fa-envelope fa-lg"></i>
+            </a>
+            <a href="https://github.com/narendrasss">
+              <i class="fab fa-github fa-lg"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/narendrass/">
+              <i class="fab fa-linkedin fa-lg"></i>
+            </a>
+          </div>
+        </div>
       </div>
+      <button onclick="toggleNav()" class="btn btn--nav">
+        <i class="fas fa-bars fa-lg"></i>
+      </button>
       <nav class="nav">
-        <button class="nav__open">
-          <i class="fas fa-caret-left fa-2x"></i>
-        </button>
-        <button class="nav__close"><i class="fas fa-times fa-4x"></i></button>
         <ul class="nav__links">
-          <li class="nav__link"><a href="/">Home</a></li>
-          <li class="nav__link"><a href="./about.html">About</a></li>
-          <li class="nav__link"><a href="./projects/">Projects</a></li>
-          <li class="nav__link"><a href="./contact.html">Contact</a></li>
+          <li class="nav__link--active">Home</li>
+          <li>Projects</li>
+          <li>About</li>
+          <li>Contact</li>
         </ul>
+        <button onclick="toggleNav()" class="btn btn--nav btn--nav--close">
+          <i class="fas fa-times fa-2x"></i>
+        </button>
       </nav>
     </main>
     <!-- inject:js -->

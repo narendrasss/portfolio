@@ -1,42 +1,16 @@
-.profile {
-  position: relative;
-  grid-column: 2;
-}
-
-.profile--text {
-  margin-top: 1rem;
-}
-
-.profile--links {
-  margin-top: 1rem;
-}
-
-.link--mail {
-  position: absolute;
-  bottom: 2.5rem;
-}
-
 .nav {
   position: fixed;
+  top: 0;
+  left: 0;
   transform: translateX(100%);
-  @include respond-to(1200px) {
-    position: relative;
-    transform: translateX(-20%);
-  }
 }
 
 .nav--active {
   transform: translateX(0);
 }
 
-.nav__open {
-  position: absolute;
-  left: -2rem;
-  top: 8vh;
-}
-
-.nav__close {
-  position: absolute;
-  right: 2rem;
-  top: 8vh;
+.btn--nav {
+  position: fixed;
+  top: 10vh;
+  right: 10vw;
 }

@@ -1,25 +1,14 @@
 .profile {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2.5rem;
-  @include respond-to(670px) {
-    width: 100%;
-    height: 60%;
-    @include std-shadow();
+  display: none;
+}
+
+.profile__links {
+  color: $secondary;
+  margin-top: 1rem;
+  > * {
+    margin-right: 0.5rem;
+    &:last-child {
+      margin-right: 0;
+    }
   }
-}
-
-.profile--text {
-  width: 80%;
-}
-
-.profile--intro {
-  line-height: 1.2;
-}
-
-.profile--link {
-  list-style: none;
 }
