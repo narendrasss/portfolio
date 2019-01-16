@@ -1,10 +1,11 @@
 .content {
   width: 100%;
+  min-height: 100%;
   padding: 2rem;
+  @include center-contents;
   @include respond-to(650px) {
     grid-column: 2;
     grid-row: 3;
-    @include center-contents;
     @include std-shadow;
   }
 }
