@@ -39,11 +39,13 @@
 }
 
 .nav__link {
-  background: none;
-  border-radius: 1rem;
-  padding: 0.2rem 0.5rem;
-  &:hover {
-    color: $secondary;
+  @include respond-to(650px) {
+    background: none;
+    border-radius: 1rem;
+    padding: 0.2rem 0.5rem;
+    &:hover {
+      color: $secondary;
+    }
   }
 }
 

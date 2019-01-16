@@ -132,12 +132,13 @@ button {
         .nav__links > *:last-child {
           margin-right: 0; } }
 
-.nav__link {
-  background: none;
-  border-radius: 1rem;
-  padding: 0.2rem 0.5rem; }
-  .nav__link:hover {
-    color: #435ef6; }
+@media only screen and (min-width: 650px) {
+  .nav__link {
+    background: none;
+    border-radius: 1rem;
+    padding: 0.2rem 0.5rem; }
+    .nav__link:hover {
+      color: #435ef6; } }
 
 .nav__link--active {
   background: #373836; }
