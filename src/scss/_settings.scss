@@ -50,3 +50,12 @@ $f-size-base: 14px;
     3px 8px 5px rgba(0, 0, 0, 0.03), 2px 3px 4px -2px rgba(0, 0, 0, 0.08),
     0px 75px 70px -50px rgba(10, 20, 50, 0.12), 0px -5px 5px 0px white;
 }
+
+@mixin child-margins($margin) {
+  > * {
+    margin-bottom: $margin;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

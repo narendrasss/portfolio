@@ -1,6 +1,5 @@
 .content {
   width: 100%;
-  height: 100%;
   padding: 2rem;
   @include respond-to(650px) {
     grid-column: 2;

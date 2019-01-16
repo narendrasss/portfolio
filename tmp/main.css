@@ -94,6 +94,10 @@ button {
     .btn--nav {
       display: none; } }
 
+.projects {
+  display: block;
+  padding-top: 30vh; }
+
 .nav {
   background: #1e2022;
   width: 100vw;
@@ -149,6 +153,7 @@ button {
       box-shadow: 2px 12px 30px 4px rgba(0, 0, 0, 0.05), 3px 8px 5px rgba(0, 0, 0, 0.03), 2px 3px 4px -2px rgba(0, 0, 0, 0.08), 0px 75px 70px -50px rgba(10, 20, 50, 0.12), 0px -5px 5px 0px white; } }
 
 .btn--nav {
+  background: white;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
@@ -186,7 +191,6 @@ button {
 
 .content {
   width: 100%;
-  height: 100%;
   padding: 2rem; }
   @media only screen and (min-width: 650px) {
     .content {
@@ -224,3 +228,35 @@ button {
 
 .content--active {
   display: flex; }
+
+.project {
+  margin-top: 4rem; }
+  .project > * {
+    margin-bottom: 2rem; }
+    .project > *:last-child {
+      margin-bottom: 0; }
+
+.project__img {
+  width: 100%;
+  height: 12rem;
+  background: #f2f2f2;
+  border-radius: 1rem; }
+
+.project__info > * {
+  margin-bottom: 1rem; }
+  .project__info > *:last-child {
+    margin-bottom: 0; }
+
+.project__stack {
+  display: flex;
+  flex-wrap: wrap; }
+
+.project__tech {
+  background: #f2f2f2;
+  padding: 0.2rem 0.4rem;
+  border-radius: 1em;
+  font-size: 0.95rem;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em; }
+  .project__tech:last-child {
+    margin-right: 0; }
