@@ -3,6 +3,10 @@
   top: 0;
   left: 0;
   transform: translateX(100%);
+  @include respond-to(650px) {
+    transform: translateX(0);
+    position: relative;
+  }
 }
 
 .nav--active {
@@ -13,4 +17,7 @@
   position: fixed;
   top: 10vh;
   right: 10vw;
+  @include respond-to(650px) {
+    display: none;
+  }
 }

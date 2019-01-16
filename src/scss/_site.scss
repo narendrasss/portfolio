@@ -1,4 +1,9 @@
 .site {
   width: 100vw;
   height: 100vh;
+  @include respond-to(650px) {
+    display: grid;
+    grid-template-columns: 1fr 80% 1fr;
+    grid-template-rows: 1fr 2rem 60% 2rem 1fr;
+  }
 }

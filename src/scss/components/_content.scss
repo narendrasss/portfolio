@@ -3,9 +3,8 @@
   height: 100%;
   padding: 2rem;
   @include respond-to(650px) {
-    width: 80%;
-    height: 60%;
-    @include center-self(absolute);
+    grid-column: 2;
+    grid-row: 3;
     @include center-contents;
     @include std-shadow;
   }

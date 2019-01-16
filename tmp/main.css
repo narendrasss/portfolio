@@ -67,12 +67,21 @@ button {
 .site {
   width: 100vw;
   height: 100vh; }
+  @media only screen and (min-width: 650px) {
+    .site {
+      display: grid;
+      grid-template-columns: 1fr 80% 1fr;
+      grid-template-rows: 1fr 2rem 60% 2rem 1fr; } }
 
 .nav {
   position: fixed;
   top: 0;
   left: 0;
   transform: translateX(100%); }
+  @media only screen and (min-width: 650px) {
+    .nav {
+      transform: translateX(0);
+      position: relative; } }
 
 .nav--active {
   transform: translateX(0); }
@@ -81,6 +90,9 @@ button {
   position: fixed;
   top: 10vh;
   right: 10vw; }
+  @media only screen and (min-width: 650px) {
+    .btn--nav {
+      display: none; } }
 
 .nav {
   background: #1e2022;
@@ -93,15 +105,47 @@ button {
   display: flex;
   align-items: center;
   justify-content: center; }
+  @media only screen and (min-width: 650px) {
+    .nav {
+      width: auto;
+      height: auto;
+      background: none;
+      color: #373836;
+      font-family: "Work Sans", sans-serif;
+      font-size: 1rem;
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: end;
+      align-self: end; } }
 
 .nav__links {
   list-style: none;
   display: flex;
   flex-direction: column;
   align-items: flex-start; }
+  @media only screen and (min-width: 650px) {
+    .nav__links {
+      flex-direction: row;
+      justify-content: flex-start; }
+      .nav__links > * {
+        margin-right: 1rem; }
+        .nav__links > *:last-child {
+          margin-right: 0; } }
+
+.nav__link {
+  background: none;
+  border-radius: 1rem;
+  padding: 0.2rem 0.5rem; }
+  .nav__link:hover {
+    color: #435ef6; }
 
 .nav__link--active {
   background: #373836; }
+  @media only screen and (min-width: 650px) {
+    .nav__link--active {
+      background: #435ef6;
+      color: white;
+      box-shadow: 2px 12px 30px 4px rgba(0, 0, 0, 0.05), 3px 8px 5px rgba(0, 0, 0, 0.03), 2px 3px 4px -2px rgba(0, 0, 0, 0.08), 0px 75px 70px -50px rgba(10, 20, 50, 0.12), 0px -5px 5px 0px white; } }
 
 .btn--nav {
   width: 3rem;
@@ -133,12 +177,8 @@ button {
   padding: 2rem; }
   @media only screen and (min-width: 650px) {
     .content {
-      width: 80%;
-      height: 60%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      grid-column: 2;
+      grid-row: 3;
       display: flex;
       align-items: center;
       justify-content: center;

@@ -7,6 +7,18 @@
   color: white;
   transition: transform 0.5s ease;
   @include center-contents;
+  @include respond-to(650px) {
+    width: auto;
+    height: auto;
+    background: none;
+    color: $c-head;
+    font-family: $f-body;
+    font-size: 1rem;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    align-self: end;
+  }
 }
 
 .nav__links {
@@ -14,8 +26,32 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  @include respond-to(650px) {
+    flex-direction: row;
+    justify-content: flex-start;
+    > * {
+      margin-right: 1rem;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.nav__link {
+  background: none;
+  border-radius: 1rem;
+  padding: 0.2rem 0.5rem;
+  &:hover {
+    color: $secondary;
+  }
 }
 
 .nav__link--active {
   background: $c-head;
+  @include respond-to(650px) {
+    background: $secondary;
+    color: white;
+    @include std-shadow;
+  }
 }
