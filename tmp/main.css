@@ -161,6 +161,18 @@ button {
 .link {
   background: #d9dffd; }
 
+.link--info {
+  position: relative; }
+  .link--info:hover:after {
+    content: attr(data-info);
+    position: absolute;
+    background: #f2f2f2;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    bottom: -180%;
+    left: 0; }
+
 .profile {
   display: none; }
 

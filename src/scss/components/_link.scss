@@ -1,3 +1,19 @@
 .link {
   background: $secondary-200;
 }
+
+.link--info {
+  position: relative;
+  &:hover {
+    &:after {
+      content: attr(data-info);
+      position: absolute;
+      background: $main-200;
+      padding: 0.2rem 0.4rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      bottom: -180%;
+      left: 0;
+    }
+  }
+}

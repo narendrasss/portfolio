@@ -16,27 +16,38 @@
       crossorigin="anonymous"
     />
   </head>
+
   <body>
     <main class="site">
       <div class="content">
-        <div class="info profile content--active">
-          <h1 class="content__title">Narendra Syahrasyad.</h1>
+        <div class="info">
+          <h1 class="content__title">Let's talk.</h1>
           <div class="content__text">
             <p>
-              Aspiring software developer. Business and computer science at UBC.
+              Interested in working together, or would just like to chat? Reach
+              me through my
+              <a
+                class="link link--info"
+                data-info="hello@narendras.io"
+                href="mailto:hello@narendras.io"
+              >
+                email</a
+              >,
+              <a
+                class="link link--info"
+                data-info="in/narendrass"
+                href="https://www.linkedin.com/in/narendrass/"
+              >
+                linkedIn</a
+              >, or
+              <a
+                class="link link--info"
+                data-info="@narendrass"
+                href="https://www.instagram.com/narendrass/"
+              >
+                instagram</a
+              >.
             </p>
-            <p>Check out my <a class="link" href="./projects/">projects</a>!</p>
-          </div>
-          <div class="profile__links">
-            <a href="mailto:hello@narendras.io">
-              <i class="fas fa-envelope fa-lg"></i>
-            </a>
-            <a href="https://github.com/narendrasss">
-              <i class="fab fa-github fa-lg"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/narendrass/">
-              <i class="fab fa-linkedin fa-lg"></i>
-            </a>
           </div>
         </div>
       </div>
@@ -45,9 +56,11 @@
       </button>
       <nav class="nav">
         <ul class="nav__links">
-          <li class="nav__link nav__link--active"><a href="/">Home</a></li>
+          <li class="nav__link"><a href="/">Home</a></li>
           <li class="nav__link"><a href="./projects/">Projects</a></li>
-          <li class="nav__link"><a href="./contact.html">Contact</a></li>
+          <li class="nav__link nav__link--active">
+            <a href="./contact.html">Contact</a>
+          </li>
         </ul>
         <button onclick="toggleNav()" class="btn btn--nav btn--nav--close">
           <i class="fas fa-times fa-2x"></i>
