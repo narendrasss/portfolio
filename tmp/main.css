@@ -187,7 +187,7 @@ button {
 
 .content {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -298,12 +298,13 @@ button {
 
 .projects {
   display: block;
-  padding: 30vh 0 20vh 0; }
+  padding: 25vh 2rem; }
   @media only screen and (min-width: 650px) {
     .projects {
       display: grid;
       grid-template-columns: 1fr 60% 1fr;
-      min-height: 100vh; } }
+      min-height: 100vh;
+      padding: 30vh 0 20vh 0; } }
 
 @media only screen and (min-width: 650px) {
   .info--projects {

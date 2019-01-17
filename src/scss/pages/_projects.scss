@@ -5,11 +5,12 @@
 
 .projects {
   display: block;
-  padding: 30vh 0 20vh 0;
+  padding: 25vh 2rem;
   @include respond-to(650px) {
     display: grid;
     grid-template-columns: 1fr 60% 1fr;
     min-height: 100vh;
+    padding: 30vh 0 20vh 0;
   }
 }
 
