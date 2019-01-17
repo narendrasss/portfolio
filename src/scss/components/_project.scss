@@ -1,6 +1,10 @@
 .project {
   margin-top: 4rem;
   @include child-margins(2rem);
+  @include respond-to(1024px) {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .project__img {
@@ -8,10 +12,18 @@
   height: 12rem;
   background: $main-200;
   border-radius: 1rem;
+  @include respond-to(1024px) {
+    margin-bottom: 0;
+    margin-right: 2rem;
+    flex: 2;
+  }
 }
 
 .project__info {
   @include child-margins(1rem);
+  @include respond-to(1024px) {
+    flex: 3;
+  }
 }
 
 .project__stack {

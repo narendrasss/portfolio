@@ -18,11 +18,11 @@
   </head>
 
   <body>
-    <main class="site">
-      <div class="content">
-        <div class="info projects">
+    <main class="site site--projects">
+      <div class="content projects">
+        <div class="info info--projects">
           <h1 class="content__title">Projects</h1>
-          <div class="content__text">
+          <div class="content__text project__intro">
             <p>
               As a computer science student I have worked with many different
               mediums to create all sorts of cool things, from assembly programs
@@ -47,13 +47,26 @@
                 </div>
               </div>
             </section>
+            <section class="project">
+              <figure class="project__img"></figure>
+              <div class="project__info">
+                <h2>DNS Resolver</h2>
+                <div class="project__desc">
+                  A command line program to manually resolve addresses through
+                  the DNS protocol.
+                </div>
+                <div class="project__stack">
+                  <div class="project__tech">Java</div>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </div>
       <button onclick="toggleNav()" class="btn btn--nav">
         <i class="fas fa-bars fa-lg"></i>
       </button>
-      <nav class="nav">
+      <nav class="nav nav--projects">
         <ul class="nav__links">
           <li class="nav__link"><a href="/">Home</a></li>
           <li class="nav__link nav__link--active">

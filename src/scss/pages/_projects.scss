@@ -1,4 +1,27 @@
+.nav--projects {
+  position: fixed;
+  top: 0;
+}
+
 .projects {
   display: block;
-  padding-top: 30vh;
+  padding: 30vh 0 20vh 0;
+  @include respond-to(650px) {
+    display: grid;
+    grid-template-columns: 1fr 60% 1fr;
+    min-height: 100vh;
+  }
+}
+
+.info--projects {
+  @include respond-to(650px) {
+    width: 100%;
+    grid-column: 2;
+  }
+}
+
+.project__intro {
+  @include respond-to(650px) {
+    width: 70%;
+  }
 }

@@ -7,3 +7,11 @@
     grid-template-rows: 1fr 2rem 60% 2rem 1fr;
   }
 }
+
+.site--projects {
+  @include respond-to(650px) {
+    height: auto;
+    min-height: 100vh;
+    display: block;
+  }
+}
