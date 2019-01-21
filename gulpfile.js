@@ -62,4 +62,4 @@ gulp.task("watch", () => {
 });
 
 gulp.task("dev", gulp.series(["copy", "inject", "serve", "watch"]));
-gulp.task("build", gulp.series(["copy", "inject"]));
+gulp.task("build", gulp.series(["copy"]));
