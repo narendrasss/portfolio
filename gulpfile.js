@@ -9,10 +9,10 @@ const paths = {
   srcSCSS: "src/scss/**/*.scss",
   srcJS: "src/js/**/*.js",
 
-  tmp: "docs",
-  tmpHTML: "docs/**/*.html",
-  tmpCSS: "docs/**/*.css",
-  tmpJS: "docs/**/*.js",
+  dist: "docs",
+  distHTML: "docs/**/*.html",
+  distCSS: "docs/**/*.css",
+  distJS: "docs/**/*.js",
 
   dist: "dist",
   distIndex: "dist/index.html",
@@ -21,34 +21,34 @@ const paths = {
 };
 
 gulp.task("html", () => {
-  return gulp.src(paths.srcHTML).pipe(gulp.dest(paths.tmp));
+  return gulp.src(paths.srcHTML).pipe(gulp.dest(paths.dist));
 });
 
 gulp.task("css", () => {
   return gulp
     .src(paths.srcSCSS)
     .pipe(sass())
-    .pipe(gulp.dest(paths.tmp));
+    .pipe(gulp.dest(paths.dist));
 });
 
 gulp.task("js", () => {
-  return gulp.src(paths.srcJS).pipe(gulp.dest(paths.tmp));
+  return gulp.src(paths.srcJS).pipe(gulp.dest(paths.dist));
 });
 
 gulp.task("copy", gulp.parallel(["html", "css", "js"]));
 
 gulp.task("inject", () => {
-  const css = gulp.src(paths.tmpCSS);
-  const js = gulp.src(paths.tmpJS);
+  const css = gulp.src(paths.distCSS);
+  const js = gulp.src(paths.distJS);
   return gulp
-    .src(paths.tmpHTML)
+    .src(paths.distHTML)
     .pipe(inject(css, { relative: true }))
     .pipe(inject(js, { relative: true }))
-    .pipe(gulp.dest(paths.tmp));
+    .pipe(gulp.dest(paths.dist));
 });
 
 gulp.task("serve", () => {
-  return gulp.src(paths.tmp).pipe(
+  return gulp.src(paths.dist).pipe(
     webserver({
       host: "0.0.0.0",
       port: 3000,
