@@ -9,10 +9,10 @@ const paths = {
   srcSCSS: "src/scss/**/*.scss",
   srcJS: "src/js/**/*.js",
 
-  tmp: "tmp",
-  tmpHTML: "tmp/**/*.html",
-  tmpCSS: "tmp/**/*.css",
-  tmpJS: "tmp/**/*.js",
+  tmp: "docs",
+  tmpHTML: "docs/**/*.html",
+  tmpCSS: "docs/**/*.css",
+  tmpJS: "docs/**/*.js",
 
   dist: "dist",
   distIndex: "dist/index.html",
