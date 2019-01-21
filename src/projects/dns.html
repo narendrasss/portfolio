@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Narendra Syahrasyad</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- src/index.html -->
+
+    <!-- inject:css -->
+    <!-- endinject -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css"
+    />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+
+  <body>
+    <main class="site site--projects">
+      <nav class="project-buttons">
+        <a href="/projects/" class="btn btn--nav btn--project">
+          <i class="fas fa-home"></i>
+        </a>
+        <a href="/projects/" class="btn btn--nav btn--project">
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="/projects/" class="btn btn--nav btn--project">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+      </nav>
+      <div class="content projects content--project">
+        <article class="info info--project">
+          <h1>DNS Resolver</h1>
+          <header class="project__header">
+            <div id="team" class="project__front project__team">
+              <div class="ack__title">Team</div>
+              <div class="ack__info">
+                <p>Narendra Syahrasyad</p>
+                <p>Daniel Le</p>
+              </div>
+            </div>
+            <div id="purpose" class="project__front project__purpose">
+              <div class="ack__title">Purpose</div>
+              <div class="ack__info">
+                <p>CPSC 317 <em>Internet Computing</em></p>
+              </div>
+            </div>
+            <div class="project__comments">
+              Credit to CPSC 317 TAs, team, and Professor Alan Wagner for the
+              code boilerplate.
+            </div>
+            <div class="project__stack">
+              <div class="project__tech">Java</div>
+              <div class="project__tech">Command Line</div>
+            </div>
+          </header>
+          <h2>Project Description</h2>
+          <p>
+            This program uses the DNS protocol to resolve domain names to IP
+            addresses. The program is able to resolve to both IPv4 and IPv6
+            addresses. It resolves using an <strong>iterative</strong> approach.
+          </p>
+          <p>To run the program you run the following command:</p>
+          <pre><code>$ java -jar DNSLookupService.jar [DNS Server IP]</code></pre>
+          <p>Alternatively, if you clone the git repo you can simply run:</p>
+          <pre><code>$ make run</code></pre>
+          <p>
+            And it will start the program with a DNS server close to UBC.
+            Following this the program will wait on commands. It accepts the
+            following commands:
+          </p>
+          <ul>
+            <li>
+              <code>lookup [domain name]</code> - Looks up and returns the IP
+              address of the given domain name.
+            </li>
+            <li>
+              <code>trace [on | off]</code> - Turns on/off verbose tracing. If
+              this is on, it prints out every query and response the program
+              makes to the DNS server(s).
+            </li>
+            <li>
+              <code>server [ip]</code> - Changes the DNS server to
+              <code>ip</code>.
+            </li>
+          </ul>
+        </article>
+      </div>
+    </main>
+    <!-- inject:js -->
+    <!-- endinject -->
+  </body>
+</html>

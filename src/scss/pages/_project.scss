@@ -1,0 +1,19 @@
+.content--project {
+  @include respond-to(1024px) {
+    grid-template-columns: 1fr 35rem 1fr;
+  }
+}
+
+.info--project {
+  @include child-margins(2rem);
+  @include respond-to(650px) {
+    grid-column: 2;
+    width: 100%;
+  }
+}
+
+.project-buttons {
+  position: fixed;
+  top: 10vh;
+  right: 10vw;
+}

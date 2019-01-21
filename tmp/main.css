@@ -151,6 +151,19 @@ button {
       color: white;
       box-shadow: 2px 12px 30px 4px rgba(0, 0, 0, 0.05), 3px 8px 5px rgba(0, 0, 0, 0.03), 2px 3px 4px -2px rgba(0, 0, 0, 0.08), 0px 75px 70px -50px rgba(10, 20, 50, 0.12), 0px -5px 5px 0px white; } }
 
+.project-buttons {
+  display: flex;
+  flex-direction: column; }
+  .project-buttons > * {
+    margin-bottom: 1rem; }
+    .project-buttons > *:last-child {
+      margin-bottom: 0; }
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
 .btn--nav {
   background: white;
   width: 3rem;
@@ -241,12 +254,20 @@ button {
   width: 100%;
   height: 12rem;
   background: #f2f2f2;
-  border-radius: 1rem; }
+  border-radius: 1rem;
+  position: relative; }
   @media only screen and (min-width: 1024px) {
     .project__img {
       margin-bottom: 0;
       margin-right: 2rem;
       flex: 2; } }
+  .project__img > a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; }
 
 .project__info > * {
   margin-bottom: 1rem; }
@@ -271,6 +292,41 @@ button {
   .project__tech:last-child {
     margin-right: 0; }
 
+/* -- Project Page -- */
+.ack__title {
+  color: #c7c7c7;
+  font-weight: bold;
+  margin-bottom: 0.5rem; }
+
+.project__header {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #f2f2f2; }
+  .project__header > * {
+    margin-bottom: 1rem; }
+    .project__header > *:last-child {
+      margin-bottom: 0; }
+
+.project__front {
+  display: flex;
+  flex-direction: column; }
+  @media only screen and (min-width: 750px) {
+    .project__front {
+      flex: 1; } }
+  @media only screen and (min-width: 950px) {
+    .project__front {
+      flex-basis: auto;
+      margin-right: 1rem; } }
+
+.project__comments {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  flex-basis: 100%; }
+
+#purpose {
+  margin-right: 0; }
+
 .nav {
   position: fixed;
   top: 0;
@@ -292,13 +348,21 @@ button {
     .btn--nav {
       display: none; } }
 
+.btn--project {
+  position: relative;
+  top: 0;
+  right: 0; }
+  @media only screen and (min-width: 650px) {
+    .btn--project {
+      display: flex; } }
+
 .nav--projects {
   position: fixed;
   top: 0; }
 
 .projects {
   display: block;
-  padding: 25vh 2rem; }
+  padding: 30vh 2rem 15vh 2rem; }
   @media only screen and (min-width: 650px) {
     .projects {
       display: grid;
@@ -314,3 +378,22 @@ button {
 @media only screen and (min-width: 650px) {
   .project__intro {
     width: 70%; } }
+
+@media only screen and (min-width: 1024px) {
+  .content--project {
+    grid-template-columns: 1fr 35rem 1fr; } }
+
+.info--project > * {
+  margin-bottom: 2rem; }
+  .info--project > *:last-child {
+    margin-bottom: 0; }
+
+@media only screen and (min-width: 650px) {
+  .info--project {
+    grid-column: 2;
+    width: 100%; } }
+
+.project-buttons {
+  position: fixed;
+  top: 10vh;
+  right: 10vw; }

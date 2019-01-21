@@ -5,7 +5,7 @@
 
 .projects {
   display: block;
-  padding: 25vh 2rem;
+  padding: 30vh 2rem 15vh 2rem;
   @include respond-to(650px) {
     display: grid;
     grid-template-columns: 1fr 60% 1fr;

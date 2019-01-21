@@ -21,3 +21,12 @@
     display: none;
   }
 }
+
+.btn--project {
+  position: relative;
+  top: 0;
+  right: 0;
+  @include respond-to(650px) {
+    display: flex;
+  }
+}
