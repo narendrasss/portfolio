@@ -8,11 +8,13 @@ const paths = {
   srcHTML: "src/**/*.html",
   srcSCSS: "src/scss/**/*.scss",
   srcJS: "src/js/**/*.js",
+  srcAssets: "src/assets/**/*",
 
   dist: "dist",
   distIndex: "dist/index.html",
   distCSS: "dist/**/*.css",
-  distJS: "dist/**/*.js"
+  distJS: "dist/**/*.js",
+  distAssets: "dist/assets/**/*"
 };
 
 gulp.task("html", () => {
@@ -28,6 +30,10 @@ gulp.task("css", () => {
 
 gulp.task("js", () => {
   return gulp.src(paths.srcJS).pipe(gulp.dest(paths.dist));
+});
+
+gulp.task("assets", () => {
+  return gulp.src(paths.srcAssets).pipe(gulp.dest(paths.distAssets));
 });
 
 gulp.task("copy", gulp.parallel(["html", "css", "js"]));
