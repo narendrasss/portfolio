@@ -36,7 +36,7 @@ gulp.task("assets", () => {
   return gulp.src(paths.srcAssets).pipe(gulp.dest(paths.distAssets));
 });
 
-gulp.task("copy", gulp.parallel(["html", "css", "js"]));
+gulp.task("copy", gulp.parallel(["html", "css", "js", "assets"]));
 
 gulp.task("inject", () => {
   const css = gulp.src(paths.distCSS);
