@@ -35,7 +35,7 @@
           <i class="fas fa-arrow-left"></i>
         </a>
       </nav>
-      <div class="content projects content--project">
+      <div class="content content--project">
         <article class="info info--project">
           <h1>DNS Resolver</h1>
           <p>
@@ -85,8 +85,10 @@
           </p>
           <ul>
             <li>
-              <code>lookup (domain name)</code> - Looks up and returns the IP
-              address of the given domain name.
+              <code>lookup (domain name) [query type]</code> - Looks up and
+              returns the IP address of the given domain name. Query type can be
+              one of A (IPv4), AAAA (IPv6), NS or CNAME. If left out it defaults
+              to A.
             </li>
             <li>
               <code>trace (on|off)</code> - Turns on/off verbose tracing. If
@@ -97,13 +99,24 @@
               <code>server (ip)</code> - Changes the DNS server to
               <code>ip</code>.
             </li>
+            <li><code>exit</code> - Terminates the program.</li>
           </ul>
           <h2>Example Output</h2>
           <p>
             Without verbose tracing, the program simply outputs the resulting IP
             of the given domain:
           </p>
-          <img src="../assets/dns/cmd.svg" alt="" />
+          <img src="../assets/dns/lookup.svg" alt="" class="info__img" />
+          <p>
+            Adding the appropriate query type returns the appropriate resource
+            record:
+          </p>
+          <img src="../assets/dns/out-ipv6.svg" alt="" class="info__img" />
+          <p>
+            With verbose tracing, the program outputs all of the requests and
+            responses:
+          </p>
+          <img src="../assets/dns/out-trace.svg" alt="" class="info__img" />
         </article>
       </div>
     </main>

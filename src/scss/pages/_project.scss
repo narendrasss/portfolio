@@ -1,15 +1,29 @@
 .content--project {
-  @include respond-to(1024px) {
-    grid-template-columns: 1fr 35rem 1fr;
+  display: block;
+  padding: 30vh 2rem 15vh 2rem;
+  @include respond-to(650px) {
+    min-height: 100vh;
+    padding: 30vh 0 20vh 0;
   }
 }
 
 .info--project {
   @include child-margins(2rem);
   @include respond-to(650px) {
-    grid-column: 2;
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3rem 60% 3rem 1fr;
+    > * {
+      grid-column: 3;
+    }
   }
+  @include respond-to(1024px) {
+    grid-template-columns: 1fr 3rem 35rem 3rem 1fr;
+  }
+}
+
+.info__img {
+  grid-column: 2 / 5;
 }
 
 .project-buttons {
