@@ -3,6 +3,11 @@ a {
   color: inherit;
 }
 
+pre {
+  max-width: 100%;
+  overflow-x: scroll;
+}
+
 code {
   background: rgba(0, 0, 0, 0.05);
   padding: 3px 6px;
@@ -12,7 +17,7 @@ code {
 
 ul,
 li {
-  list-style-position: inside;
+  list-style-position: outside;
 }
 
 h1,
@@ -24,6 +29,10 @@ h2 {
 
 h1 {
   font-size: 3em;
+}
+
+h2 {
+  margin-top: 3rem;
 }
 
 button {

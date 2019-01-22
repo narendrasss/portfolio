@@ -9,11 +9,6 @@ const paths = {
   srcSCSS: "src/scss/**/*.scss",
   srcJS: "src/js/**/*.js",
 
-  dist: "docs",
-  distHTML: "docs/**/*.html",
-  distCSS: "docs/**/*.css",
-  distJS: "docs/**/*.js",
-
   dist: "dist",
   distIndex: "dist/index.html",
   distCSS: "dist/**/*.css",
@@ -41,7 +36,7 @@ gulp.task("inject", () => {
   const css = gulp.src(paths.distCSS);
   const js = gulp.src(paths.distJS);
   return gulp
-    .src(paths.distHTML)
+    .src(paths.distIndex)
     .pipe(inject(css, { relative: true }))
     .pipe(inject(js, { relative: true }))
     .pipe(gulp.dest(paths.dist));

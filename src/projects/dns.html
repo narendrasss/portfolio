@@ -20,10 +20,6 @@
       rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css"
     />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-    <script>
-      hljs.initHighlightingOnLoad();
-    </script>
   </head>
 
   <body>
@@ -42,6 +38,11 @@
       <div class="content projects content--project">
         <article class="info info--project">
           <h1>DNS Resolver</h1>
+          <p>
+            <a href="https://github.com/narendrasss/dns-resolver">
+              <i class="fab fa-github fa-lg"></i> narendrasss/dns-resolver
+            </a>
+          </p>
           <header class="project__header">
             <div id="team" class="project__front project__team">
               <div class="ack__title">Team</div>
@@ -73,28 +74,36 @@
           </p>
           <p>To run the program you run the following command:</p>
           <pre><code>$ java -jar DNSLookupService.jar [DNS Server IP]</code></pre>
-          <p>Alternatively, if you clone the git repo you can simply run:</p>
-          <pre><code>$ make run</code></pre>
           <p>
-            And it will start the program with a DNS server close to UBC.
-            Following this the program will wait on commands. It accepts the
-            following commands:
+            Alternatively, running <code>$ make run</code> will begin the
+            program with the default name server &mdash; a name server close to
+            UBC.
+          </p>
+          <p>
+            The program then waits for more commands. It accepts the following
+            as inputs:
           </p>
           <ul>
             <li>
-              <code>lookup [domain name]</code> - Looks up and returns the IP
+              <code>lookup (domain name)</code> - Looks up and returns the IP
               address of the given domain name.
             </li>
             <li>
-              <code>trace [on | off]</code> - Turns on/off verbose tracing. If
+              <code>trace (on|off)</code> - Turns on/off verbose tracing. If
               this is on, it prints out every query and response the program
               makes to the DNS server(s).
             </li>
             <li>
-              <code>server [ip]</code> - Changes the DNS server to
+              <code>server (ip)</code> - Changes the DNS server to
               <code>ip</code>.
             </li>
           </ul>
+          <h2>Example Output</h2>
+          <p>
+            Without verbose tracing, the program simply outputs the resulting IP
+            of the given domain:
+          </p>
+          <img src="../assets/dns/cmd.svg" alt="" />
         </article>
       </div>
     </main>
