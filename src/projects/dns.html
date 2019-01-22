@@ -117,6 +117,55 @@
             responses:
           </p>
           <img src="../assets/dns/out-trace.svg" alt="" class="info__img" />
+          <h2>Development Notes</h2>
+          <h3>Encapsulation</h3>
+          <p>
+            The hardest part about this program was to parse the response given
+            from the server. What made this difficult was that the response is
+            in hexadecimal form.
+          </p>
+          <p>
+            The first thing that we did was to encapsulate all the logic that
+            goes into parsing the response into a
+            <code>DNSResponse</code> class. The main function can then call
+            different getter functions for the different information contained
+            in the server response:
+          </p>
+          <img
+            src="../assets/dns/dns-response-class.svg"
+            alt=""
+            class="info__img"
+          />
+          <h3>Optimizations</h3>
+          <h4>Domains</h4>
+          <p>
+            The server response is in the form of a compressed DNS response.
+            That is if a domain name string is repeated, the string is
+            represented as a pointer to the first occurence of the domain
+            instead of the domain itself.
+          </p>
+          <p>
+            Moreover, domains with a substring that was seen before is also
+            represented as a pointer. Thus the domain parser may potentially
+            have to repeatedly go back even if the domain was parsed before.
+          </p>
+          <p>
+            I avoided this problem by using Java's built in
+            <code>HashMap</code> data structure to store the domains. Each
+            domain is represented by its offset from the beginning of the
+            response:
+          </p>
+          <img src="../assets/dns/hashmap.svg" alt="" class="info__img" />
+          <p>
+            Our domain parser will then check in the map first to see if the
+            domain was previously parsed. If not, the parser gets the domain and
+            puts the domain into the map:
+          </p>
+          <img src="../assets/dns/domain-parser.svg" alt="" class="info__img" />
+          <h4>Search</h4>
+          <p>
+            We minimized the number of search queries by compressing answers.
+          </p>
         </article>
       </div>
     </main>
