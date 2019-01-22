@@ -14,7 +14,7 @@ const paths = {
   distIndex: "dist/index.html",
   distCSS: "dist/**/*.css",
   distJS: "dist/**/*.js",
-  distAssets: "dist/assets/**/*"
+  distAssets: "dist/assets/"
 };
 
 gulp.task("html", () => {
