@@ -66,7 +66,9 @@
               <div class="project__tech">Command Line</div>
             </div>
           </header>
-          <h2>Project Description</h2>
+          <video class="info__media" autoplay loop>
+            <source src="../assets/dns/example.mp4" type="video/mp4" />
+          </video>
           <p>
             This program uses the DNS protocol to resolve domain names to IP
             addresses. The program is able to resolve to both IPv4 and IPv6
@@ -101,22 +103,6 @@
             </li>
             <li><code>exit</code> - Terminates the program.</li>
           </ul>
-          <h2>Example Output</h2>
-          <p>
-            Without verbose tracing, the program simply outputs the resulting IP
-            of the given domain:
-          </p>
-          <img src="../assets/dns/lookup.svg" alt="" class="info__img" />
-          <p>
-            Adding the appropriate query type returns the appropriate resource
-            record:
-          </p>
-          <img src="../assets/dns/out-ipv6.svg" alt="" class="info__img" />
-          <p>
-            With verbose tracing, the program outputs all of the requests and
-            responses:
-          </p>
-          <img src="../assets/dns/out-trace.svg" alt="" class="info__img" />
           <h2>Development Notes</h2>
           <h3>Encapsulation</h3>
           <p>
@@ -134,7 +120,7 @@
           <img
             src="../assets/dns/dns-response-class.svg"
             alt=""
-            class="info__img"
+            class="info__media"
           />
           <h3>Optimizations</h3>
           <h4>Domains</h4>
@@ -155,13 +141,17 @@
             domain is represented by its offset from the beginning of the
             response:
           </p>
-          <img src="../assets/dns/hashmap.svg" alt="" class="info__img" />
+          <img src="../assets/dns/hashmap.svg" alt="" class="info__media" />
           <p>
             Our domain parser will then check in the map first to see if the
             domain was previously parsed. If not, the parser gets the domain and
             puts the domain into the map:
           </p>
-          <img src="../assets/dns/domain-parser.svg" alt="" class="info__img" />
+          <img
+            src="../assets/dns/domain-parser.svg"
+            alt=""
+            class="info__media"
+          />
           <h4>Search</h4>
           <p>
             We minimized the number of search queries by compressing answers.
