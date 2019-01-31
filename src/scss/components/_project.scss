@@ -10,9 +10,12 @@
 .project__img {
   width: 100%;
   height: 12rem;
-  background: $main-200;
-  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  border-radius: 1rem;
+  transition: transform 0.5s ease-out;
   @include respond-to(1024px) {
     margin-bottom: 0;
     margin-right: 2rem;
@@ -25,6 +28,16 @@
     width: 100%;
     height: 100%;
     z-index: 10;
+  }
+  > img {
+    object-fit: cover;
+    min-height: 100%;
+    min-width: 100%;
+    border-radius: inherit;
+  }
+  &:hover {
+    transform: scale(1.05);
+    @include std-shadow;
   }
 }
 
