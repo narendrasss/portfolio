@@ -66,7 +66,7 @@
               <div class="project__tech">Command Line</div>
             </div>
           </header>
-          <video class="info__media" autoplay loop>
+          <video class="info__media" playsinline autoplay loop>
             <source src="../assets/dns/example.mp4" type="video/mp4" />
           </video>
           <p>
@@ -154,8 +154,25 @@
           />
           <h4>Search</h4>
           <p>
-            We minimized the number of search queries by compressing answers.
+            Often we will receive responses with a CNAME that the DNS server has
+            an answer for, but is not exactly what we originally queried:
           </p>
+          <img src="../assets/dns/compress-1.svg" alt="" class="info__media" />
+          <p>
+            It is redundant to query for <code>github.com</code> again when the
+            answer is already given to us. Our program gets around this by
+            <em>compressing</em> the answers, that is it will turn the above
+            response into the following record:
+          </p>
+          <img src="../assets/dns/compress-2.svg" alt="" class="info__media" />
+          <p>Which is the record that we were originally looking for.</p>
+          <p>Similarly we might encounter a CNAME chain:</p>
+          <img src="../assets/dns/compress-3.svg" alt="" class="info__media" />
+          <p>
+            Through the same process our program will compress this into one
+            record, removing the need to query the first CNAME(s):
+          </p>
+          <img src="../assets/dns/compress-4.svg" alt="" class="info__media" />
         </article>
       </div>
     </main>
