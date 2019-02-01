@@ -17,3 +17,9 @@
     }
   }
 }
+
+.link--git {
+  &:hover {
+    color: $secondary;
+  }
+}
