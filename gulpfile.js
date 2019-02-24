@@ -52,7 +52,7 @@ gulp.task("serve", () => {
   return gulp.src(paths.dist).pipe(
     webserver({
       host: "0.0.0.0",
-      port: 3000,
+      port: 8000,
       livereload: true
     })
   );
