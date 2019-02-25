@@ -18,7 +18,7 @@
     }
   }
   @include respond-to(1024px) {
-    grid-template-columns: 1fr 3rem 35rem 3rem 1fr;
+    grid-template-columns: 1fr 3rem 40rem 3rem 1fr;
   }
 }
 

@@ -6,7 +6,7 @@
 /* --- Colors --- */
 
 $c-head: #373836;
-$c-body: #1e2022;
+$c-body: #1b2733;
 
 $main: $c-body;
 $main-200: #f2f2f2;
@@ -19,9 +19,10 @@ $secondary-600: #0a2adb;
 /* --- Fonts --- */
 
 //$f-head: "Montserrat", sans-serif;
-$f-body: "Work Sans", sans-serif;
-$f-head: "Libre Baskerville", serif;
-$f-mono: "Hasklig", monospace;
+$f-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+$f-head: $f-body;
+$f-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 
 $f-size-base: 14px;
 

@@ -34,7 +34,7 @@
       </nav>
       <div class="content content--project">
         <article class="info info--project">
-          <h1>Coin Server and Client</h1>
+          <h1>Coin Server</h1>
           <p>
             <a
               class="link--git"
@@ -56,6 +56,15 @@
                 <p>Personal Project</p>
               </div>
             </div>
+            <div class="project__comments">
+              I'd like to thank Scott Moss and his
+              <a
+                class="link"
+                href="https://frontendmasters.com/courses/api-design-nodejs-v3/"
+                >API design in Node.js</a
+              >
+              course. The course helped me begin the server.
+            </div>
             <div class="project__stack">
               <div class="project__tech">Typescript</div>
               <div class="project__tech">Express</div>
@@ -63,28 +72,68 @@
               <div class="project__tech">Node.js</div>
             </div>
           </header>
-          <p>This project is currently a work in progress. Stay tuned!</p>
+          <video class="info__media" playsinline autoplay loop>
+            <source src="../assets/coin/intro.mp4" type="video/mp4" />
+          </video>
+          <h2>Coin Server</h2>
           <p>
-            In the meantime, check out the wireframes
+            The coin server is a simple API that accepts standard CRUD
+            operations built on the express, mongoose and MongoDB stack. It is
+            tested using Jest and authenticates using JSON web tokens.
+          </p>
+          <h3>Overview</h3>
+          <p>
+            You first have to create an account by registering. The server
+            responds with a token that contains the id of your authenticated
+            user. If you have not authenticated, the server will reject all of
+            your requests.
+          </p>
+          <p>
+            After registering or logging in, the server allows you to manage
+            three types of objects &mdash; transactions, categories, and fixed
+            expenses.
+          </p>
+          <p>
+            You can query these objects through the api endpoints
+            <code>/tr</code>, <code>/ctg</code>, and
+            <code>/fe</code> respectively. The details of the request/response
+            can be seen in the
             <a
               class="link"
-              href="https://xd.adobe.com/spec/b7512e29-47ed-4f97-74f1-b958501c4539-c160/"
-              >here</a
+              href="https://github.com/narendrasss/coin-server/blob/master/usage.md"
+              >usage</a
             >
-            or read my development notes down below.
+            page of the github page.
           </p>
-          <h2>Development Notes</h2>
-          <p>As of Jan 31, the app looks as follows:</p>
-          <img
-            class="info__media"
-            src="../assets/finance/jan-31.png"
-            alt="Jan 31 app state"
-          />
+          <h3>Features</h3>
           <p>
-            The new monthly expense page (right) is the only page that is
-            complete. Adding a new expense from that page updates the 'fixed
-            expenses' list in the budget page (middle).
+            Other than the standard CRUD operations, the server also supports
+            the following:
           </p>
+          <ul>
+            <li>
+              <strong>Protected routes</strong>
+              <p>
+                All requests to <code>/api/*</code> must have a valid JSON web
+                token attached to its headers. If it doesn't, the server rejects
+                the request with a 401.
+              </p>
+            </li>
+            <li>
+              <strong>Query params</strong>
+              <p>
+                Get requests to <code>/api/tr</code> accepts query parameters
+                such as vendor name, category, maximum amount and before a
+                certain date. Again all details are listed in the
+                <a
+                  class="link"
+                  href="https://github.com/narendrasss/coin-server/blob/master/usage.md"
+                  >usage</a
+                >
+                page on github.
+              </p>
+            </li>
+          </ul>
         </article>
       </div>
     </main>

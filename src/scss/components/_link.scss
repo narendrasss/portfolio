@@ -1,20 +1,8 @@
 .link {
   position: relative;
-  &:before {
-    content: "";
-    position: absolute;
-    background: $secondary-200;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    transform-origin: left;
-    z-index: -1;
-  }
+  color: $secondary;
   &:hover {
-    &:before {
-      animation: slide-right 0.5s ease-out;
-    }
+    color: $secondary-600;
   }
 }
 
