@@ -93,8 +93,9 @@
             with a JSON web token which it stores in <code>localStorage</code>.
             The rest of the app uses this token to make requests to the server.
           </p>
-          <p>Here's a snippet of the code that does the form submition:</p>
-          <pre><code class="language-js">private _handleSubmit: React.FormEventHandler = async e => {
+          <p>Here's a snippet of the code that does the form submission:</p>
+          <pre><code class="language-js">/* Login.tsx */
+private _handleSubmit: React.FormEventHandler = async e => {
   e.preventDefault();
           
   await this.setState({ loading: true });
@@ -117,6 +118,128 @@
               href="https://github.com/narendrasss/coin/blob/master/src/client/index.ts"
               >here!</a
             >
+          </p>
+          <p>
+            The <code>Dashboard</code> component then fetches information about
+            the authenticated user using that token:
+          </p>
+          <pre><code class="language-js">/* Dashboard.tsx */
+public async componentDidMount() {
+  const token = localStorage.getItem('token');
+  if (!token) navigate('/login');
+
+  const client = coin();
+
+  await this.setState({ loading: true });
+  try {
+    const res = await client.user.me();
+    this.setState({ ...res, loading: false });
+  } catch (e) {
+    this.setState({ loading: false, errors: e.error });
+  }
+}</code></pre>
+          <h3>Register</h3>
+          <figure>
+            <video class="info__media--vertical" playsinline autoplay loop>
+              <source
+                src="../assets/finance/register-wf.mp4"
+                type="video/mp4"
+              />
+            </video>
+            <figcaption>The wireframe flow of the register pages.</figcaption>
+          </figure>
+          <p>
+            I had a difficult time implementing the register page(s) because of
+            the number of data that I needed to keep track of. Being relatively
+            new to React, I was not used to the idea that the registration state
+            should be kept in a parent component (assuming no use of state
+            management tools like Redux or the Context API).
+          </p>
+          <p>
+            To me it felt that there was no distinct
+            <strong>separation of concerns</strong> &mdash; each register page
+            concerns a specific part of the user and yet all of the information
+            (and handlers) should be contained in a parent for it to work
+            correctly. The verbosity of having to pass individual props also
+            deterred me from a solution that I liked.
+          </p>
+          <p>
+            Nevertheless I reached a solution that I liked by splitting the
+            parent's state to correspond to different pages then passing those
+            splits as props:
+          </p>
+          <pre><code class="language-js">/* Register.tsx */
+state: RegisterState = {
+  info: { ... }, // info page
+  income: { ... }, // income page
+  fixedExpenses: [ ... ], // expenses page (same as income page)
+  categories: [ ... ], // categories page
+  goal: { ... }, // goal page
+  loading: false
+};
+
+public render() {
+  const { info, income, fixedExpenses, categories, goal, loading, errors } = this.state;
+  return (
+    &lt;Router>
+      &lt;RegisterInfo 
+        path="/" 
+        handleTextChange={this._handleTextChange('info')} 
+        toggleSuccess={this._toggleSuccess('info')} 
+        {...info} 
+      />
+      ...
+    &lt;/Router>
+  )
+}</code></pre>
+          <p>
+            With this I needed to change the input handlers. Without separation,
+            a simple <code>[event.target.name]: event.target.value</code> would
+            work. This would not work <em>with</em> separation as the functions
+            have to know which group they correspond to. Therefore I made the
+            handlers higher order functions:
+          </p>
+          <pre><code class="language-js">private _handleTextChange = (
+  group: 'info' | 'income' | 'goal'
+): React.ChangeEventHandler&lt;HTMLInputElement> => e => {
+  const page = this.state[group];
+  page[e.target.name] = e.target.value;
+  this.setState({ [group]: page });
+};</code></pre>
+          <p>
+            When passing it as props I just needed to specify which group the
+            handler belongs to:
+          </p>
+          <pre><code class="language-js">return (
+  &lt;Router>
+    &lt;RegisterIncome handleTextChange={this._handleTextChange('income')} />
+  &lt;/Router>
+)</code></pre>
+          <p>
+            For <strong>form validation</strong>, I chose to use the built in
+            API provided by HTML5. Using the API is very straightforward &mdash;
+            simply add the correct type (for text inputs) and HTML5 will do the
+            rest. There's a lot more than it can do &mdash; read all about it
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation"
+              class="link"
+              >here!</a
+            >
+          </p>
+          <figure>
+            <video class="info__media--vertical" playsinline autoplay loop>
+              <source
+                src="../assets/finance/register-incorrect.mp4"
+                type="video/mp4"
+              />
+            </video>
+            <figcaption>Validating passwords</figcaption>
+          </figure>
+          <p>
+            There are some areas where I added my own custom validation. For
+            example I needed the password and password confirmation fields to
+            match. To make sure this is the case I compared the passwords before
+            submission and throw an error if it is not the same.
           </p>
         </article>
       </div>
