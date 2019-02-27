@@ -103,6 +103,22 @@
   border-radius: 8px;
 }
 
+.info__media--vertical {
+  border-radius: 16px;
+  width: 100%;
+  @include respond-to(750px) {
+    width: 50%;
+  }
+  @include std-shadow;
+}
+
+.split {
+  display: flex;
+  &:first-child {
+    margin-right: 1rem;
+  }
+}
+
 #purpose {
   margin-right: 0;
 }

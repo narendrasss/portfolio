@@ -80,20 +80,48 @@
             or read my development notes down below.
           </p>
           <h2>Development Notes</h2>
-          <p>As of Jan 31, the app looks as follows:</p>
-          <img
-            class="info__media"
-            src="../assets/finance/jan-31.png"
-            alt="Jan 31 app state"
-          />
+          <h3>Login</h3>
+          <figure>
+            <video class="info__media--vertical" playsinline autoplay loop>
+              <source src="../assets/finance/login.mp4" type="video/mp4" />
+            </video>
+          </figure>
           <p>
-            The new monthly expense page (right) is the only page that is
-            complete. Adding a new expense from that page updates the 'fixed
-            expenses' list in the budget page (middle).
+            With the backend server implemented and finalized, the login page
+            now works correctly. It works by sending a POST request to the
+            server with the email and password in the body. The server responds
+            with a JSON web token which it stores in <code>localStorage</code>.
+            The rest of the app uses this token to make requests to the server.
+          </p>
+          <p>Here's a snippet of the code that does the form submition:</p>
+          <pre><code class="language-js">private _handleSubmit: React.FormEventHandler = async e => {
+  e.preventDefault();
+          
+  await this.setState({ loading: true });
+  const { email, password } = this.state;
+  client
+    .login(email, password)
+    .then(res => {
+      localStorage.removeItem('token');
+      localStorage.setItem('token', res.token!);
+      this.setState({ loading: false }, () => navigate('/home'));
+    })
+    .catch(err => this.setState({ loading: false, error: err.error }));
+};</code></pre>
+          <p>
+            Note that <code>client</code> is a HTTP client that I made to
+            abstract out the API calls to the server. Read more about its
+            implementation
+            <a
+              class="link"
+              href="https://github.com/narendrasss/coin/blob/master/src/client/index.ts"
+              >here!</a
+            >
           </p>
         </article>
       </div>
     </main>
+    <script src="../prism.js"></script>
     <script src="../index.js"></script>
     <!-- inject:js -->
     <!-- endinject -->

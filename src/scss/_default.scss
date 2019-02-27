@@ -6,6 +6,7 @@ a {
 pre {
   max-width: 100%;
   overflow-x: scroll;
+  border-radius: 8px;
 }
 
 code {
@@ -53,6 +54,12 @@ img,
 video {
   width: 100%;
   height: auto;
+}
+
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 ::selection {

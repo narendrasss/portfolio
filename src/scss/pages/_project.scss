@@ -9,12 +9,18 @@
 
 .info--project {
   @include child-margins(2rem);
+  pre {
+    margin-bottom: 2rem;
+  }
   @include respond-to(650px) {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 3rem 60% 3rem 1fr;
     > * {
       grid-column: 3;
+    }
+    pre {
+      grid-column: 2 / 5;
     }
   }
   @include respond-to(1024px) {
@@ -23,6 +29,10 @@
 }
 
 .info__media {
+  grid-column: 2 / 5;
+}
+
+figure {
   grid-column: 2 / 5;
 }
 
