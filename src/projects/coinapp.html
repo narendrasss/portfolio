@@ -31,7 +31,7 @@
         <a href="/projects/dns.html" class="btn btn--nav btn--project">
           <i class="fas fa-arrow-right"></i>
         </a>
-        <a href="/projects/coinapp.html" class="btn btn--nav btn--project">
+        <a href="/projects/coin.html" class="btn btn--nav btn--project">
           <i class="fas fa-arrow-left"></i>
         </a>
       </nav>
@@ -94,7 +94,7 @@
             The rest of the app uses this token to make requests to the server.
           </p>
           <p>Here's a snippet of the code that does the form submission:</p>
-          <pre><code class="language-js">/* Login.tsx */
+          <pre><code class="language-tsx">/* Login.tsx */
 private _handleSubmit: React.FormEventHandler = async e => {
   e.preventDefault();
           
@@ -123,7 +123,7 @@ private _handleSubmit: React.FormEventHandler = async e => {
             The <code>Dashboard</code> component then fetches information about
             the authenticated user using that token:
           </p>
-          <pre><code class="language-js">/* Dashboard.tsx */
+          <pre><code class="language-tsx">/* Dashboard.tsx */
 public async componentDidMount() {
   const token = localStorage.getItem('token');
   if (!token) navigate('/login');
@@ -138,7 +138,7 @@ public async componentDidMount() {
     this.setState({ loading: false, errors: e.error });
   }
 }</code></pre>
-          <h3>Register</h3>
+          <h3>Register Component Design</h3>
           <figure>
             <video class="info__media--vertical" playsinline autoplay loop>
               <source
@@ -168,7 +168,7 @@ public async componentDidMount() {
             parent's state to correspond to different pages then passing those
             splits as props:
           </p>
-          <pre><code class="language-js">/* Register.tsx */
+          <pre><code class="language-tsx">/* Register.tsx */
 state: RegisterState = {
   info: { ... }, // info page
   income: { ... }, // income page
@@ -199,7 +199,7 @@ public render() {
             have to know which group they correspond to. Therefore I made the
             handlers higher order functions:
           </p>
-          <pre><code class="language-js">private _handleTextChange = (
+          <pre><code class="language-tsx">private _handleTextChange = (
   group: 'info' | 'income' | 'goal'
 ): React.ChangeEventHandler&lt;HTMLInputElement> => e => {
   const page = this.state[group];
@@ -210,16 +210,17 @@ public render() {
             When passing it as props I just needed to specify which group the
             handler belongs to:
           </p>
-          <pre><code class="language-js">return (
+          <pre><code class="language-tsx">return (
   &lt;Router>
     &lt;RegisterIncome handleTextChange={this._handleTextChange('income')} />
   &lt;/Router>
 )</code></pre>
+          <h3>Form validation</h3>
           <p>
-            For <strong>form validation</strong>, I chose to use the built in
-            API provided by HTML5. Using the API is very straightforward &mdash;
-            simply add the correct type (for text inputs) and HTML5 will do the
-            rest. There's a lot more than it can do &mdash; read all about it
+            For form validation, I chose to use the built in API provided by
+            HTML5. Using the API is very straightforward &mdash; simply add the
+            correct type (for text inputs) and HTML5 will do the rest. There's a
+            lot more than it can do &mdash; read all about it
             <a
               href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation"
               class="link"
@@ -233,7 +234,7 @@ public render() {
                 type="video/mp4"
               />
             </video>
-            <figcaption>Validating passwords</figcaption>
+            <figcaption>Validating passwords.</figcaption>
           </figure>
           <p>
             There are some areas where I added my own custom validation. For
@@ -241,6 +242,21 @@ public render() {
             match. To make sure this is the case I compared the passwords before
             submission and throw an error if it is not the same.
           </p>
+          <p>
+            This is not to say that all validation is done client side. The app
+            actually makes an API call at the end of the first register page to
+            determine if the email that the user puts in is a valid
+            <em>available</em> email:
+          </p>
+          <figure>
+            <video class="info__media--vertical" playsinline autoplay loop>
+              <source
+                src="../assets/finance/register-taken-email.mp4"
+                type="video/mp4"
+              />
+            </video>
+            <figcaption>Registering with an unavailable email.</figcaption>
+          </figure>
         </article>
       </div>
     </main>
