@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Narendra Syahrasyad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- src/index.html -->
+
+  <!-- inject:css -->
+  <!-- endinject -->
+  <link rel="stylesheet" href="../../../main.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css" />
+</head>
+
+<body>
+  <main class="site site--projects">
+    <nav class="project-buttons">
+      <a href="../../coinapp/" class="btn btn--nav btn--project">
+        <i class="fas fa-home"></i>
+      </a>
+      </a>
+    </nav>
+    <div class="content content--project">
+      <article class="info info--project">
+        <h1 class="post__title">Takeaways From Making the Login Component</h1>
+        <figure>
+          <video class="info__media--vertical" playsinline autoplay loop>
+            <source src="../assets/login.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <p>
+          With the backend server implemented and finalized, the login page
+          now works correctly. It works by sending a POST request to the
+          server with the email and password in the body. The server responds
+          with a JSON web token which it stores in <code>localStorage</code>.
+          The rest of the app uses this token to make requests to the server.
+        </p>
+        <p>Here's a snippet of the code that does the form submission:</p>
+        <pre><code class="language-tsx">/* Login.tsx */
+private _handleSubmit: React.FormEventHandler = async e => {
+  e.preventDefault();
+          
+  await this.setState({ loading: true });
+  const { email, password } = this.state;
+  client
+    .login(email, password)
+    .then(res => {
+      localStorage.removeItem('token');
+      localStorage.setItem('token', res.token!);
+      this.setState({ loading: false }, () => navigate('/home'));
+    })
+    .catch(err => this.setState({ loading: false, error: err.error }));
+};</code></pre>
+        <p>
+          Note that <code>client</code> is a HTTP client that I made to
+          abstract out the API calls to the server. Read more about its
+          implementation
+          <a class="link" href="https://github.com/narendrasss/coin/blob/master/src/client/index.ts">here!</a>
+        </p>
+        <p>
+          The <code>Dashboard</code> component then fetches information about
+          the authenticated user using that token:
+        </p>
+        <pre><code class="language-tsx">/* Dashboard.tsx */
+public async componentDidMount() {
+  const token = localStorage.getItem('token');
+  if (!token) navigate('/login');
+
+  const client = coin();
+
+  await this.setState({ loading: true });
+  try {
+    const res = await client.user.me();
+    this.setState({ ...res, loading: false });
+  } catch (e) {
+    this.setState({ loading: false, errors: e.error });
+  }
+}</code></pre>
+      </article>
+    </div>
+  </main>
+  <script src="../../../prism.js"></script>
+  <script src="../../../index.js"></script>
+  <!-- inject:js -->
+  <!-- endinject -->
+</body>
+
+</html>

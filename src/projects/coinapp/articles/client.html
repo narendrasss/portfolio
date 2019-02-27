@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Narendra Syahrasyad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- src/index.html -->
+
+  <!-- inject:css -->
+  <!-- endinject -->
+  <link rel="stylesheet" href="../../../main.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css" />
+</head>
+
+<body>
+  <main class="site site--projects">
+    <nav class="project-buttons">
+      <a href="../../coinapp/" class="btn btn--nav btn--project">
+        <i class="fas fa-home"></i>
+      </a>
+      </a>
+    </nav>
+    <div class="content content--project">
+      <article class="info info--project">
+        <h1 class="post__title">The HTTP Client</h1>
+        <p>A large proportion of the logic behind the application itself is communicating with the back end server. In the registration process alone the app has to make multiple API calls:</p>
+        <ul>
+          <li>One in page 1 to verify that the email is available</li>
+          <li>One for each fixed expense listed by the user</li>
+          <li>One for each category listed by the user</li>
+          <li>One for the remaining information at the end of the process</li>
+        </ul>
+        <p>This is a lot of reusable logic. Realizing this I decided to create a wrapper for the requests, exposing an API so that I can call something like <code>api.transactions.get()</code> to get all of my transactions.</p>
+        <h2>The API</h2>
+        <p>The client itself lies in a single <code>index.ts</code> file in <code>src/client</code>. You can preview the source code <a href="https://github.com/narendrasss/coin/blob/master/src/client/index.ts" class="link">here</a>.</p>
+        <p>This file exposes a single function that initializes the client:</p>
+        <pre><code class="language-typescript">export default (baseURL: string = 'http://localhost:3001', opts?: AxiosRequestConfig) =>
+  api(Axios.create({ baseURL, ...opts }));</code></pre>
+        <p>I am using Axios here rather than fetch as a matter of preference &mdash; I personally prefer Axios's API over fetch.</p>
+        <p>The <code>api()</code> function takes in an <code>AxiosInstance</code> &mdash; essentially an object with get, post, put and delete functions &mdash; and returns an object with some functions that I can use to communicate specifically to the coin back end server:</p>
+        <pre><code class="language-typescript">{
+  register() { ... },
+  login() { ... },
+  user: {
+    me() { ... },
+    update() { ... }
+  },
+  category: {
+    getOne() { ... },
+    getAll() { ... },
+    create() { ... },
+    ...
+  },
+  fixedExpenses: { ... },
+  transactions: { ... }
+}</code></pre>
+        <h2>What It Boils Down To</h2>
+        <p>The functions under category, fixed expenses and transactions are functions that correspond to standard CRUD operations. Thus there are really only 4 functions here: get, post, update, and delete.</p>
+        <p>Even these functions are quite similar; the main difference being the method of the request:</p>
+        <pre><code class="language-typescript">function method&lt;T>(url: string, opts?: any): Promise&lt;T> {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    return new Promise((resolve, reject) => reject('Please login.'));
+  }
+  const headers = { authorization: `Bearer ${token}` };
+  return new Promise((resolve, reject) => {
+    client
+      .method(url, opts, { headers })
+      .then(res => resolve(res.data))
+      .catch(err => reject(parseError(err.response)));
+  });
+}</code></pre>
+        <p>Where <code>method</code> refers to one of get, post, put, and delete and <code>client</code> refers to the <code>AxiosInstance</code> object mentioned earlier. The logic here is the function first attempts to retrieve the token from local storage. If it is not there, the function returns a new Promise that immediately gets rejected. If it is there, the function places the token onto the header of the request and sends the request with the given options.</p>
+        <p>With this function now available, the implementation for the API is very simple &mdash; I only need to return the function with the appropriate url and (optional) options object. For example if I wish to retrieve all my categories:</p>
+        <pre><code class="language-typescript">category {
+  getAll() {
+    return get&lt;ICategory>('/api/ctg');
+  }          
+}</code></pre>
+        <p>If I wish to create a particular category I only need to pass in an <code>opts</code> object that contains the data we wish to post:</p>
+        <pre><code class="language-typescript">category {
+  create(opts: ICategory) {
+    return post&lt;ICategory>('/api/ctg', opts);
+  }
+}</code></pre>
+        <h2>Standardizing Error</h2>
+        <p>Notice how in the generic function shown earlier if the promise is rejected <code>parseError</code> is called:</p>
+        <pre><code class="language-typescript">client
+  .method(url, opts, { headers })
+  .then(res => resolve(res.data))
+  .catch(err => reject(parseError(err.response)));</code></pre>
+        <p>This <code>parseError</code> function simply converts an instance of <code>AxiosResponse</code> into an instance of <code>CoinError</code>, which is the type used in the application. Then the app can be sure of what to expect from the Promise returned by the function.</p>
+      </article>
+    </div>
+  </main>
+  <script src="../../../prism.js"></script>
+  <script src="../../../index.js"></script>
+  <!-- inject:js -->
+  <!-- endinject -->
+</body>
+
+</html>

@@ -9,7 +9,7 @@
 
     <!-- inject:css -->
     <!-- endinject -->
-    <link rel="stylesheet" href="../main.css" />
+    <link rel="stylesheet" href="../../main.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
@@ -25,10 +25,10 @@
   <body>
     <main class="site site--projects">
       <nav class="project-buttons">
-        <a href="/projects/" class="btn btn--nav btn--project">
+        <a href="../../projects/" class="btn btn--nav btn--project">
           <i class="fas fa-home"></i>
         </a>
-        <a href="/projects/coinapp.html" class="btn btn--nav btn--project">
+        <a href="../../projects/coinapp" class="btn btn--nav btn--project">
           <i class="fas fa-arrow-left"></i>
         </a>
       </nav>
@@ -67,7 +67,7 @@
             </div>
           </header>
           <video class="info__media" playsinline autoplay loop>
-            <source src="../assets/dns/example.mp4" type="video/mp4" />
+            <source src="./assets/example.mp4" type="video/mp4" />
           </video>
           <p>
             This program uses the DNS protocol to resolve domain names to IP
@@ -118,7 +118,7 @@
             in the server response:
           </p>
           <img
-            src="../assets/dns/dns-response-class.svg"
+            src="./assets/dns-response-class.svg"
             alt=""
             class="info__media"
           />
@@ -141,43 +141,39 @@
             domain is represented by its offset from the beginning of the
             response:
           </p>
-          <img src="../assets/dns/hashmap.svg" alt="" class="info__media" />
+          <img src="./assets/hashmap.svg" alt="" class="info__media" />
           <p>
             Our domain parser will then check in the map first to see if the
             domain was previously parsed. If not, the parser gets the domain and
             puts the domain into the map:
           </p>
-          <img
-            src="../assets/dns/domain-parser.svg"
-            alt=""
-            class="info__media"
-          />
+          <img src="./assets/domain-parser.svg" alt="" class="info__media" />
           <h4>Search</h4>
           <p>
             Often we will receive responses with a CNAME that the DNS server has
             an answer for, but is not exactly what we originally queried:
           </p>
-          <img src="../assets/dns/compress-1.svg" alt="" class="info__media" />
+          <img src="./assets/compress-1.svg" alt="" class="info__media" />
           <p>
             It is redundant to query for <code>github.com</code> again when the
             answer is already given to us. Our program gets around this by
             <em>compressing</em> the answers, that is it will turn the above
             response into the following record:
           </p>
-          <img src="../assets/dns/compress-2.svg" alt="" class="info__media" />
+          <img src="./assets/compress-2.svg" alt="" class="info__media" />
           <p>Which is the record that we were originally looking for.</p>
           <p>Similarly we might encounter a CNAME chain:</p>
-          <img src="../assets/dns/compress-3.svg" alt="" class="info__media" />
+          <img src="./assets/compress-3.svg" alt="" class="info__media" />
           <p>
             Through the same process our program will compress this into one
             record, removing the need to query the first CNAME(s):
           </p>
-          <img src="../assets/dns/compress-4.svg" alt="" class="info__media" />
+          <img src="./assets/compress-4.svg" alt="" class="info__media" />
         </article>
       </div>
     </main>
-    <script src="../prism.js"></script>
-    <script src="../index.js"></script>
+    <script src="../../prism.js"></script>
+    <script src="../../index.js"></script>
     <!-- inject:js -->
     <!-- endinject -->
   </body>

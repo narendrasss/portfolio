@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Narendra Syahrasyad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- src/index.html -->
+
+  <!-- inject:css -->
+  <!-- endinject -->
+  <link rel="stylesheet" href="../../../main.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css" />
+</head>
+
+<body>
+  <main class="site site--projects">
+    <nav class="project-buttons">
+      <a href="../../coinapp/" class="btn btn--nav btn--project">
+        <i class="fas fa-home"></i>
+      </a>
+      </a>
+    </nav>
+    <div class="content content--project">
+      <article class="info info--project">
+        <h1 class="post__title">Designing the Register Pages</h1>
+        <figure>
+          <video class="info__media--vertical" playsinline autoplay loop>
+            <source src="../assets/register-wf.mp4" type="video/mp4" />
+          </video>
+          <figcaption>The wireframe flow of the register pages.</figcaption>
+        </figure>
+        <p>
+          I faced some challenges when I was implementing the register pages.
+          Being relatively new to React, I was not used to the idea that the
+          registration state should be kept in a parent component (assuming no
+          use of state management tools like Redux or the Context API).
+        </p>
+        <p>
+          To me it felt that there was no distinct
+          <strong>separation of concerns</strong> &mdash; each register page
+          concerns a specific part of the user and yet all of the information
+          (and handlers) should be contained in a parent for it to work
+          correctly. The verbosity of having to pass individual props also
+          deterred me from a solution that I liked.
+        </p>
+        <p>
+          Nevertheless I reached a solution that I liked by splitting the
+          parent's state to correspond to different pages then passing those
+          splits as props:
+        </p>
+        <pre><code class="language-tsx">/* Register.tsx */
+state: RegisterState = {
+  info: { ... }, // info page
+  income: { ... }, // income page
+  fixedExpenses: [ ... ], // expenses page (same as income page)
+  categories: [ ... ], // categories page
+  goal: { ... }, // goal page
+  loading: false
+};
+        
+public render() {
+  const { info, income, fixedExpenses, categories, goal, loading, errors } = this.state;
+  return (
+    &lt;Router>
+      &lt;RegisterInfo 
+        path="/" 
+        handleTextChange={this._handleTextChange('info')} 
+        toggleSuccess={this._toggleSuccess('info')} 
+        {...info} 
+      />
+      ...
+    &lt;/Router>
+  )
+}</code></pre>
+        <p>
+          With this I needed to change the input handlers. Without separation,
+          a simple <code>[event.target.name]: event.target.value</code> would
+          work. This would not work <em>with</em> separation as the functions
+          have to know which group they correspond to. Therefore I made the
+          handlers higher order functions:
+        </p>
+        <pre><code class="language-tsx">private _handleTextChange = (group: 'info' | 'income' | 'goal'): React.ChangeEventHandler&lt;HTMLInputElement> => e => {
+  const page = this.state[group];
+  page[e.target.name] = e.target.value;
+  this.setState({ [group]: page });
+};</code></pre>
+        <p>
+          When passing it as props I just needed to specify which group the
+          handler belongs to:
+        </p>
+        <pre><code class="language-tsx">return (
+  &lt;Router>
+    &lt;RegisterIncome handleTextChange={this._handleTextChange('income')} />
+  &lt;/Router>
+)</code></pre>
+        <h2>Form validation</h2>
+        <p>
+          For form validation, I chose to use the built in API provided by
+          HTML5. Using the API is very straightforward &mdash; simply add the
+          correct type (for text inputs) and HTML5 will do the rest. There's a
+          lot more than it can do &mdash; read all about it
+          <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation" class="link">here!</a>
+        </p>
+        <figure>
+          <video class="info__media--vertical" playsinline autoplay loop>
+            <source src="../assets/register-incorrect.mp4" type="video/mp4" />
+          </video>
+          <figcaption>Validating passwords.</figcaption>
+        </figure>
+        <p>
+          There are some areas where I added my own custom validation. For
+          example I needed the password and password confirmation fields to
+          match. To make sure this is the case I compared the passwords before
+          submission and throw an error if it is not the same.
+        </p>
+        <p>
+          This is not to say that all validation is done client side. The app
+          actually makes an API call at the end of the first register page to
+          determine if the email that the user puts in is a valid
+          <em>available</em> email:
+        </p>
+        <figure>
+          <video class="info__media--vertical" playsinline autoplay loop>
+            <source src="../assets/register-taken-email.mp4" type="video/mp4" />
+          </video>
+          <figcaption>Registering with an unavailable email.</figcaption>
+        </figure>
+      </article>
+    </div>
+  </main>
+  <script src="../../../prism.js"></script>
+  <script src="../../../index.js"></script>
+  <!-- inject:js -->
+  <!-- endinject -->
+</body>
+
+</html>

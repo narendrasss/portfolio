@@ -8,13 +8,13 @@ const paths = {
   srcHTML: "src/**/*.html",
   srcSCSS: "src/scss/**/*.scss",
   srcJS: "src/js/**/*.js",
-  srcAssets: "src/assets/**/*",
+  srcAssets: "src/projects/**/*",
 
   dist: "dist",
   distIndex: "dist/index.html",
   distCSS: "dist/**/*.css",
   distJS: "dist/**/*.js",
-  distAssets: "dist/assets/"
+  distAssets: "dist/projects"
 };
 
 gulp.task("html", () => {
